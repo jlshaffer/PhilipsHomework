@@ -2,6 +2,24 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
+### general java artifacts
+*target*
+*.jar
+*.war
+*.ear
+*.class
+
+### Springframe artifacts
+bin
+build
+
+### Maven
+log/
+target/
+
+### Neo4j
+**/*.db
+
 ### STS ###
 .apt_generated
 .classpath
