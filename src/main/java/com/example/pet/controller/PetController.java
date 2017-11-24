@@ -25,18 +25,21 @@ public class PetController
 	//	a list of pets, and create, delete and update functions.
     
     @RequestMapping(value = "/pet/", method = RequestMethod.POST)
-    public ResponseEntity<Void> createPet(@RequestBody PetModel pet, UriComponentsBuilder ucBuilder) 
+    public ResponseEntity<Void> createPet(@RequestBody PetModel pet)
     {
         System.out.println("Creating Pet " + pet.getName());
-          
- 
+
+        //getting error
+        //{"timestamp":1511364972065,"status":415,"error":"Unsupported Media Type","exception":"org.springframework.web.HttpMediaTypeNotSupportedException","message":"Content type '*/*;charset=UTF-8' not supported","path":"/pet/"}
+        // add that to rest request
+
         // TODO - JLS - Check for pet first
         
         String petId = petService.savePet(pet);
         
         // Google is your friend. 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/pet/{id}").buildAndExpand(petId).toUri());
+        //headers.setLocation(ucBuilder.path("/pet/{id}").buildAndExpand(petId).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }    
 }
